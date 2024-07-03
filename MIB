@@ -1,0 +1,43 @@
+#include <iostream>
+#include <bitset>
+
+struct MIB {
+    unsigned int systemFrameNumber : 6; // 6 bits for frame number
+    unsigned int subCarrierSpacingCommon : 1; // Enumerated index with 1 bit length
+    unsigned int ssb_SubcarrierOffset : 1; // Enumerated index, assumed 1 bit
+    unsigned int dmrs_TypeAPosition : 1; // Enumerated index, assumed 1 bit
+    unsigned int pdcch_ConfigSIB1 : 1; // Enumerated index with 1 bit length
+    unsigned int cellBarred : 1; // Enumerated index with 1 bit length
+    unsigned int intraFreqReselection : 1; // Enumerated index with 1 bit length
+    unsigned int spare : 1; // 1 bit for spare and 7 bits padding
+    
+    // Function to display binary representation of the MIB
+    void display() {
+        std::cout << "systemFrameNumber: " << std::bitset<6>(systemFrameNumber) << std::endl
+                  << "subCarrierSpacingCommon: " << std::bitset<1>(subCarrierSpacingCommon) << std::endl
+                  << "ssb_SubcarrierOffset: " << std::bitset<1>(ssb_SubcarrierOffset) << std::endl
+                  << "dmrs_TypeAPosition: " << std::bitset<1>(dmrs_TypeAPosition) << std::endl
+                  << "pdcch_ConfigSIB1: " << std::bitset<1>(pdcch_ConfigSIB1) << std::endl
+                  << "cellBarred: " << std::bitset<1>(cellBarred) << std::endl
+                  << "intraFreqReselection: " << std::bitset<1>(intraFreqReselection) << std::endl
+                  << "spare: " << std::bitset<1>(spare) << std::endl;
+    }
+};
+
+int main() {
+    MIB mib;
+    
+    // Setting values based on your example
+    mib.systemFrameNumber = 60; // 111100 in binary
+    mib.subCarrierSpacingCommon = 1;
+    mib.ssb_SubcarrierOffset = 0;
+    mib.dmrs_TypeAPosition = 0;
+    mib.pdcch_ConfigSIB1 = 1;
+    mib.cellBarred = 1;
+    mib.intraFreqReselection = 0;
+    mib.spare = 0;
+
+    mib.display();
+
+    return 0;
+}
